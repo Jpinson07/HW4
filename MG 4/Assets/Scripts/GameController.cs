@@ -1,18 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool gameOver = false;
+
+    void OnEnable()
     {
-        
+        Player.OnPlayerDied += StopGame;
     }
 
-    // Update is called once per frame
+    void OnDisable()
+    {
+        Player.OnPlayerDied -= StopGame;
+    }
+
+    private void StopGame()
+    {
+        if (gameOver) return;
+        gameOver = true;
+
+        Time.timeScale = 0f;
+    }
+
     void Update()
     {
-        
+        if (gameOver && Input.GetKeyDown(KeyCode.R))
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }

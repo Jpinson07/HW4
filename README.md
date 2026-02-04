@@ -1,8 +1,7 @@
 # HW4
 ## Devlog
-Write your Devlog here!
-
+This game may be a small game but that doesn't mean it doesn't benefit from having the MVC pattern since it helps keep the player logic isolated between UI, scoring, and game-flow systems. With this pattern it keeps the project much easier to maintain. The controller in this project maintains the gameplay logic and is what broadcasts the events that occur inside the game. For example, the player class is the main portion of what the gameplay occurs but also the pipespawner since that spawns the pipes in and the gameover class that causes the game to restart. With the view aspect the notable class is the score manager where you can see your score increase as you pass through pipes but also the pipe class itself because it is what signals the score event to occur and update. The events keep the system decoupled by causing certain eventts like when the player death occurs the pipes stop spawning, gameover ends the game and the player calls the method OnPlayerDied. The singleton pattern supports decoupling because it defines the endgame method and because of this allows for any controller whether it be the player, the pipe or the pipespawner to call this method.
 ## Open-Source Assets
-If you added any other assets, list them here!
+If you added any other assets, list them here
 - [Brackey's Platformer Bundle](https://brackeysgames.itch.io/brackeys-platformer-bundle) - sound effects
 - [2D pixel art seagull sprites](https://elthen.itch.io/2d-pixel-art-seagull-sprites) - seagull sprites
